@@ -20,3 +20,6 @@ cabal.project.local
 cabal.project.local~
 .HTF/
 .ghc.environment.*
+src/Lib.hs
+src/Lib2.hs
+src/Lib3.hs
