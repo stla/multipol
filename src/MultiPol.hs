@@ -73,11 +73,11 @@ simplifiedListOfMonomials :: Polynomial -> [Monomial]
 simplifiedListOfMonomials p = map (foldl1 addMonomials) groups
   where
     groups = groupBy ((==) `on` powers)
-             (sortBy (compare `on` (cantorPairing' . powers)) (toListOfMonomials p))
-    cantorPairing :: Int -> Int -> Int
-    cantorPairing k1 k2 = (k1+k2)*(k1+k2+1) + 2*k2
-    cantorPairing' :: Seq Int -> Int
-    cantorPairing' = foldl1 cantorPairing
+             (sortBy (compare `on` powers) (toListOfMonomials p))
+    -- cantorPairing :: Int -> Int -> Int
+    -- cantorPairing k1 k2 = (k1+k2)*(k1+k2+1) + 2*k2
+    -- cantorPairing' :: Seq Int -> Int
+    -- cantorPairing' = foldl1 cantorPairing
     addMonomials :: Monomial -> Monomial -> Monomial
     addMonomials monoa monob = Monomial {
                              coefficient = coefficient monoa + coefficient monob
